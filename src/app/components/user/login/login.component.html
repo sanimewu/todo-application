@@ -1,0 +1,15 @@
+<div class="text-center font-semibold">User Login</div>
+<div class="py-5">
+  <form [formGroup]="loginForm" class="py-5 flex flex-col items-center justify-center mx-auto">
+    <div formGroupName="login" class="py-1">
+      <div class="text-lg font-medium py-2">Email</div>
+      <input type="email" formControlName="mail" class="p-2 rounded w-full">
+      <br>
+      <div class="py-2"></div>
+      <div class="text-lg font-medium py-1">Password</div>
+      <input type="password" formControlName="password" class="p-2 rounded w-full">
+    </div>
+
+    <button class="btn-primary mt-5" [disabled]="isButtonDisabled()" (click)="onClick()">Submit</button>
+  </form>
+</div>
