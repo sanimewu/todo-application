@@ -8,27 +8,27 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  loginUsers:any[]=[];
+  loginObj:any = {
+    mail:'',
+    password:'',
+  }
 
   constructor(private fb: FormBuilder) {
     this.loginForm = this.fb.group({
-      mail: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      mail: new FormControl('', [Validators.required, Validators.email]),
+      password:new FormControl ('', [Validators.required, Validators.minLength(6)]),
     });
   }
 
-  isButtonDisabled() {
-    return this.loginForm.invalid;
-  }
-
   onClick() {
-    if(this.loginForm.invalid){
-
+    if(this.loginForm.valid){
+      console.log(this.loginForm.value);
     }
   }
-}
 
+  validityCheck() {
+    return this.loginForm.get('mail')?.invalid && this.loginForm.get('mail')?.touched || this.loginForm.get('password')?.invalid && this.loginForm.get('password')?.touched
+  }
 
-export interface Login {
-  mail:FormControl<string| null>;
-  password:FormControl<string | null>;
 }

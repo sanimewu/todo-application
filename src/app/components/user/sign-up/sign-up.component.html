@@ -1,1 +1,22 @@
-<p>sign-up works!</p>
+<div class="text-center font-semibold">New User Signup</div>
+<div class="py-2">
+  <form [formGroup]="signUpForm" class="flex flex-col items-center justify-center mx-auto">
+    <div class="py-1">
+      <div class="text-lg font-base py-1">Name</div>
+      <input type="text" formControlName="name" class="p-2 rounded w-full" [(ngModel)]="signupObj.name">
+      <br>
+      <div class="text-lg font-base py-1">Email</div>
+      <input type="email" formControlName="mail" class="p-2 rounded w-full" [(ngModel)]="signupObj.mail">
+      <br>
+      <div class="text-lg font-base py-1">Password</div>
+      <input type="password" formControlName="password" class="p-2 rounded w-full" [(ngModel)]="signupObj.password">
+    </div>
+    <div class="text-xs text-red-500" *ngIf="validityCheck()">
+      Give valid mail & password
+    </div>
+    <button class="btn-primary mt-5" [disabled]="signUpForm.invalid" (click)="onClick()">Submit</button>
+  </form>
+  <div class="text-center mt-2">
+    You have already an account.<a routerLink="/login" class="text-blue-500 px-2">Login</a>
+  </div>
+</div>

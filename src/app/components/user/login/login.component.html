@@ -1,15 +1,20 @@
 <div class="text-center font-semibold">User Login</div>
-<div class="py-5">
-  <form [formGroup]="loginForm" class="py-5 flex flex-col items-center justify-center mx-auto">
-    <div formGroupName="login" class="py-1">
+<div class="py-2">
+  <form [formGroup]="loginForm" class="flex flex-col items-center justify-center mx-auto">
+    <div class="py-1">
       <div class="text-lg font-medium py-2">Email</div>
-      <input type="email" formControlName="mail" class="p-2 rounded w-full">
+      <input type="email" formControlName="mail" class="p-2 rounded w-full" [(ngModel)]="loginObj.mail">
       <br>
       <div class="py-2"></div>
       <div class="text-lg font-medium py-1">Password</div>
-      <input type="password" formControlName="password" class="p-2 rounded w-full">
+      <input type="password" formControlName="password" class="p-2 rounded w-full" [(ngModel)]="loginObj.password">
     </div>
-
-    <button class="btn-primary mt-5" [disabled]="isButtonDisabled()" (click)="onClick()">Submit</button>
+    <div class="text-xs text-red-500" *ngIf="validityCheck()">
+      Give Valid mail & password must be 6 characters
+    </div>
+    <button class="btn-primary mt-5" [disabled]="loginForm.invalid" (click)="onClick()">Submit</button>
   </form>
+  <div class="text-center mt-2">
+    Don't have an account.<a routerLink="/signup" class="text-blue-500 px-2">Sign Up</a>
+  </div>
 </div>
