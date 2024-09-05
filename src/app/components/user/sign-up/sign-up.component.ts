@@ -1,52 +1,53 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss'
 })
-export class SignUpComponent implements OnInit{
+export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
-  signupUsers:any[]=[];
-  signupObj:any = {
-    name:'',
-    mail:'',
-    password:'',
-  }
-  constructor(private fb: FormBuilder, private router:Router) {
+  signupUsers: any[] = [];
+
+  constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {
     this.signUpForm = this.fb.group({
       name: new FormControl('', [Validators.required]),
-      mail: new FormControl('', [Validators.required, Validators.email]),
-      password:new FormControl ('', [Validators.required, Validators.minLength(6)]),
+      mail: new FormControl('', [
+        Validators.required,
+        Validators.email,
+      ]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     });
   }
-ngOnInit() {
-    const localData = localStorage.getItem('signupUsers');
-    if(localData!==null){
+
+  ngOnInit() {
+    const localData = localStorage.getItem('signUpUsers');
+    if (localData !== null) {
       this.signupUsers = JSON.parse(localData);
       console.log(this.signupUsers);
     }
-}
+  }
 
   onClick() {
-    if(this.signUpForm.valid){
+    if (this.signUpForm.valid) {
       console.log(this.signUpForm.value);
-      this.signupObj = { ...this.signUpForm.value };
-      this.signupUsers.push(this.signupObj);
-      localStorage.setItem('signUpUsers', JSON.stringify(this.signupUsers));
-      this.signUpForm.reset();
-      this.router.navigate(['/login']);
-      this.signupObj = {
-        name:'',
-        mail:'',
-        password:'',
-      }
+      const signupObj = this.signUpForm.getRawValue();
+      console.log('signupObj', signupObj);
+      this.signupUsers.push(signupObj);
+      this.userService.getUserByMail(signupObj.mail).subscribe(res => {
+        if (res.userFound) {
+          alert("user Exists ");
+        } else {
+          localStorage.setItem('signUpUsers', JSON.stringify(this.signupUsers));
+          this.signUpForm.reset();
+          this.router.navigate(['/login']);
+        }
+      });
+
     }
   }
 
-  validityCheck() {
-    return this.signUpForm.get('mail')?.invalid && this.signUpForm.get('mail')?.touched || this.signUpForm.get('password')?.invalid && this.signUpForm.get('password')?.touched || this.signUpForm.get('name')?.invalid && this.signUpForm.get('name')?.touched;
-  }
 }

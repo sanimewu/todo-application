@@ -11,7 +11,6 @@
       <div class="text-lg font-base py-1">Email</div>
       <input type="email" formControlName="mail" class="p-2 rounded w-full" />
       <div class="text-xs text-red-500" *ngIf="signUpForm.get('mail')?.invalid && signUpForm.get('mail')?.touched">
-        <span *ngIf="signUpForm.get('mail')?.hasError('emailExists')">This email is already registered.</span>
         <span *ngIf="signUpForm.get('mail')?.hasError('required')">Email is required.</span>
         <span *ngIf="signUpForm.get('mail')?.hasError('email')">Enter a valid email.</span>
       </div>
@@ -24,7 +23,7 @@
       </div>
     </div>
 
-    <button class="btn-primary mt-5" type="submit" [disabled]="signUpForm.invalid || validityCheck()" (click)="onClick()">
+    <button class="btn-primary mt-5" type="submit" [disabled]="signUpForm.invalid" (click)="onClick()">
       Sign Up
     </button>
   </form>
