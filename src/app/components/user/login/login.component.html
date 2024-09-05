@@ -3,11 +3,11 @@
   <form [formGroup]="loginForm" class="flex flex-col items-center justify-center mx-auto">
     <div class="py-1">
       <div class="text-lg font-medium py-2">Email</div>
-      <input type="email" formControlName="mail" class="p-2 rounded w-full" [(ngModel)]="loginObj.mail">
+      <input type="email" formControlName="mail" class="p-2 rounded w-full">
       <br>
       <div class="py-2"></div>
       <div class="text-lg font-medium py-1">Password</div>
-      <input type="password" formControlName="password" class="p-2 rounded w-full" [(ngModel)]="loginObj.password">
+      <input type="password" formControlName="password" class="p-2 rounded w-full">
     </div>
     <div class="text-xs text-red-500" *ngIf="validityCheck()">
       Give Valid mail & password must be 6 characters

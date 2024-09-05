@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-sign-up',
@@ -14,7 +15,7 @@ export class SignUpComponent implements OnInit{
     mail:'',
     password:'',
   }
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router:Router) {
     this.signUpForm = this.fb.group({
       name: new FormControl('', [Validators.required]),
       mail: new FormControl('', [Validators.required, Validators.email]),
@@ -32,9 +33,11 @@ ngOnInit() {
   onClick() {
     if(this.signUpForm.valid){
       console.log(this.signUpForm.value);
+      this.signupObj = { ...this.signUpForm.value };
       this.signupUsers.push(this.signupObj);
       localStorage.setItem('signUpUsers', JSON.stringify(this.signupUsers));
       this.signUpForm.reset();
+      this.router.navigate(['/login']);
       this.signupObj = {
         name:'',
         mail:'',
