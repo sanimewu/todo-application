@@ -16,7 +16,7 @@ export class UserService {
   }
   getUserByMail(mail: string){
     const users:any[]= this.getUsers().getValue();
-    console.log(users);
+    console.log('service users: ',users);
     const userFound = users.find((user:any) => user.mail===mail);
     if(userFound){
       return new BehaviorSubject({userFound:true }).asObservable();
