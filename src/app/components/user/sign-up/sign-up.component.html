@@ -10,14 +10,14 @@
 
       <div class="text-lg font-base py-1">Email</div>
       <input type="email" formControlName="mail" class="p-2 rounded w-full" />
-      <div class="text-xs text-red-500" *ngIf="signUpForm.get('mail')?.invalid && signUpForm.get('mail')?.touched">
+      <div class="text-xs text-red-500 py-2" *ngIf="signUpForm.get('mail')?.invalid && signUpForm.get('mail')?.touched">
         <span *ngIf="signUpForm.get('mail')?.hasError('required')">Email is required.</span>
         <span *ngIf="signUpForm.get('mail')?.hasError('email')">Enter a valid email.</span>
       </div>
 
       <div class="text-lg font-base py-1">Password</div>
       <input type="password" formControlName="password" class="p-2 rounded w-full" />
-      <div class="text-xs text-red-500" *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched">
+      <div class="text-xs text-red-500 py-2" *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched">
         <span *ngIf="signUpForm.get('password')?.hasError('required')">Password is required.</span>
         <span *ngIf="signUpForm.get('password')?.hasError('minlength')">Password must be at least 6 characters long.</span>
       </div>

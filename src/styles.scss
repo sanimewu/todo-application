@@ -24,10 +24,12 @@ body{
   }
 
   .dark{
-    @apply bg-gray-500 text-gray-400 duration-300
+    @apply bg-[#4a4a4a] duration-300
   }
   .light{
     @apply bg-gradient-to-r from-sky-100 to-indigo-100 duration-300
   }
-
+  input{
+    @apply text-black
+  }
 }
