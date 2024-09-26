@@ -1,1 +1,13 @@
-<p>todo-list-component works!</p>
+
+<div class="flex flex-col gap-10  justify-items-center">
+  <tr class="flex gap-10">
+    <th>ID</th>
+    <th>Name</th>
+    <th>Location</th>
+  </tr>
+  <tr *ngFor="let location of location" class="flex gap-10">
+    <td>{{location.id}}</td>
+    <td>{{location.bn_name}}</td>
+    <td>{{location.long}}</td>
+  </tr>
+</div>
