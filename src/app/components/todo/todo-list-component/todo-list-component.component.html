@@ -1,13 +1,17 @@
 
-<div class="flex flex-col gap-10  justify-items-center">
-  <tr class="flex gap-10">
-    <th>ID</th>
-    <th>Name</th>
-    <th>Location</th>
+<div class="flex flex-col gap-10 items-center">
+  <tr class="flex gap-10 w-full ">
+    <th class="w-1/5">UserID</th>
+    <th class="w-1/5">Title </th>
+    <th class="w-1/5">Description</th>
+    <th class="w-1/5">Date</th>
+    <th class="w-1/5">Completed</th>
   </tr>
-  <tr *ngFor="let location of location" class="flex gap-10">
-    <td>{{location.id}}</td>
-    <td>{{location.bn_name}}</td>
-    <td>{{location.long}}</td>
+  <tr *ngFor="let todo of addTodo" class="flex gap-10 text-center w-full">
+    <td class="w-1/5">{{todo.userId}}</td>
+    <td class="w-1/5">{{todo.title}}</td>
+    <td class="w-1/5">{{todo.description}}</td>
+    <td class="w-1/5">{{todo.date}}</td>
+    <td class="w-1/5">{{todo.completed}}</td>
   </tr>
 </div>

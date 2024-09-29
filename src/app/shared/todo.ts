@@ -1,6 +1,7 @@
-export interface Todo{
-  userId: number;
-  id: number;
-  task: string;
-  status: boolean;
+export interface TodoInfo {
+  userId: number |undefined;
+  title: string|undefined;
+  description: string |undefined;
+  date: string |undefined;
+  completed: boolean |undefined;
 }

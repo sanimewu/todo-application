@@ -9,6 +9,7 @@ import { TodoListComponentComponent } from './components/todo/todo-list-componen
 import { NotFoundComponentComponent } from './components/others/not-found-component/not-found-component.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { AddTodoComponent } from './components/todo/add-todo/add-todo.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {HttpClientModule} from "@angular/common/http";
     LoginComponent,
     SignUpComponent,
     TodoListComponentComponent,
-    NotFoundComponentComponent
+    NotFoundComponentComponent,
+    AddTodoComponent
   ],
   imports: [
     BrowserModule,

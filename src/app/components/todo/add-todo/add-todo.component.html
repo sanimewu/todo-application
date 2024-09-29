@@ -1,0 +1,35 @@
+<div class="text-center font-semibold">Add New Location</div>
+<div class="py-2">
+  <form [formGroup]="formValue" class="flex flex-col items-center justify-center mx-auto">
+    <div class="py-1">
+      <div class="text-lg font-base py-1">Id</div>
+      <input type="text" formControlName="userId" class="p-2 rounded w-full" />
+      <div class="text-xs text-red-500" *ngIf="formValue.get('userId')?.invalid && formValue.get('userId')?.touched">
+        Id is required.
+      </div>
+
+      <div class="text-lg font-base py-1">Title</div>
+      <input type="email" formControlName="title" class="p-2 rounded w-full" />
+      <div class="text-xs text-red-500 py-2" *ngIf="formValue.get('title')?.invalid && formValue.get('title')?.touched">
+        Title is required.
+      </div>
+
+      <div class="text-lg font-base py-1">Description</div>
+      <input type="password" formControlName="description" class="p-2 rounded w-full" />
+      <div class="text-xs text-red-500 py-2" *ngIf="formValue.get('description')?.invalid && formValue.get('description')?.touched">
+        Description is required.
+      </div>
+
+      <div class="text-lg font-base py-1">Completed</div>
+      <input type="password" formControlName="completed" class="p-2 rounded w-full" />
+      <div class="text-xs text-red-500 py-2" *ngIf="formValue.get('completed')?.invalid && formValue.get('completed')?.touched">
+        Completed is required.
+      </div>
+    </div>
+
+    <button class="btn-primary mt-5" type="submit" [disabled]="formValue.invalid" (click)="createLocation()">
+      Submit
+    </button>
+  </form>
+
+</div>
