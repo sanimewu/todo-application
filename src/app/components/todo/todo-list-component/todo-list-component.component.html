@@ -1,17 +1,42 @@
+<div class="flex gap-4 justify-center p-5 sm:flex-none">
+  <div class="text-lg text-blue-700 font-semibold">
+    <button class="btn-crud flex items-center gap-2 sm:flex-col" (click)="addTodolist()">
+      Add
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+        <path fill-rule="evenodd"
+              d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z"
+              clip-rule="evenodd"/>
+      </svg>
+    </button>
+  </div>
+  <div class="text-lg text-blue-700 font-semibold sm:flex-col">
+    <button class="btn-crud" (click)="filterTasks('All')">All</button>
+  </div>
+  <div class="text-lg text-blue-700 font-semibold sm:flex-col">
+    <button class="btn-crud" (click)="filterTasks('Active')">Active</button>
+  </div>
+  <div class="text-lg text-blue-700 font-semibold sm:flex-col">
+    <button class="btn-crud" (click)="filterTasks('Completed')">Completed</button>
+  </div>
+</div>
 
-<div class="flex flex-col gap-10 items-center">
-  <tr class="flex gap-10 w-full ">
-    <th class="w-1/5">UserID</th>
-    <th class="w-1/5">Title </th>
-    <th class="w-1/5">Description</th>
-    <th class="w-1/5">Date</th>
-    <th class="w-1/5">Completed</th>
+
+<div class="flex flex-col gap-10 items-center p-5">
+  <div class="text-2xl font-semibold text-green-700">{{filter}} lists</div>
+  <tr class="flex p-1 w-full border-bottom text-xl text-left">
+    <th class="w-1/12">ID</th>
+    <th class="w-2/12">Title </th>
+    <th class="w-4/12">Description</th>
+    <th class="w-3/12">Date</th>
+    <th class="w-2/12">Completed</th>
   </tr>
-  <tr *ngFor="let todo of addTodo" class="flex gap-10 text-center w-full">
-    <td class="w-1/5">{{todo.userId}}</td>
-    <td class="w-1/5">{{todo.title}}</td>
-    <td class="w-1/5">{{todo.description}}</td>
-    <td class="w-1/5">{{todo.date}}</td>
-    <td class="w-1/5">{{todo.completed}}</td>
-  </tr>
+  <ng-template ngFor let-todo [ngForOf]="filteredTodos()">
+    <tr class="flex p-1 text-left w-full">
+      <td class="w-1/12">{{todo.userId}}</td>
+      <td class="w-2/12">{{todo.title}}</td>
+      <td class="w-4/12">{{todo.description}}</td>
+      <td class="w-3/12">{{todo.date | date: 'fullDate'}}</td>
+      <td class="w-2/12 text-center">{{todo.completed ? 'Yes' : 'No'}}</td>
+    </tr>
+  </ng-template>
 </div>

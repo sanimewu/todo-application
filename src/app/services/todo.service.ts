@@ -7,7 +7,7 @@ import {TodoInfo} from "../shared/todo";
   providedIn: 'root'
 })
 export class TodoService {
-  baseUrl: string = "http://localhost:3001/0";
+  baseUrl: string = "http://localhost:3000/todos";
 
   constructor(private http: HttpClient) {
   }

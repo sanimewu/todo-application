@@ -11,8 +11,12 @@ import {TodoInfo} from "../../../shared/todo";
 })
 export class TodoListComponentComponent implements OnInit{
   addTodo: any[] = [];
+  filter: string = 'All';
 
   constructor(private http: HttpClient, private router: Router, private todoService: TodoService) {
+  }
+  filterTasks(filterType: string) {
+    this.filter = filterType;
   }
   ngOnInit() {
     this.todoService.getAllDistrict().subscribe(
@@ -24,5 +28,18 @@ export class TodoListComponentComponent implements OnInit{
       }
     );
 
+  }
+  filteredTodos() {
+    if (this.filter === 'Completed') {
+      return this.addTodo.filter(todo => todo.completed === true);
+    }
+    if (this.filter === 'Active') {
+      return this.addTodo.filter(todo => todo.completed === false);
+    }
+    return this.addTodo;
+  }
+
+  addTodolist() {
+    this.router.navigate(['/add-todo']);
   }
 }

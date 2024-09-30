@@ -1,9 +1,35 @@
-[
-  {
-    "userId": 1,
-    "title": "Research",
-    "description": "Completed all diagram",
-    "date":"2024-09-29T00:00:00Z",
-    "completed": false
-  }
-]
+{
+  "todos": [
+    {
+      "userId": 1,
+      "title": "Research",
+      "description": "Completed all diagram",
+      "date": "2024-09-29T00:00:00Z",
+      "completed": false
+    },
+    {
+      "id": "b9d0",
+      "userId": "2",
+      "title": "Leetcode",
+      "description": "solve 3 problems",
+      "date": "2024-09-30T04:21:40.205Z",
+      "completed": true
+    },
+    {
+      "id": "a6f2",
+      "userId": "3",
+      "title": "Netflix",
+      "description": "Watching Movies",
+      "date": "2024-09-30T07:36:19.630Z",
+      "completed": false
+    },
+    {
+      "id": "1488",
+      "userId": "4",
+      "title": "test",
+      "description": "Hello",
+      "date": "2024-09-30T07:38:38.056Z",
+      "completed": false
+    }
+  ]
+}

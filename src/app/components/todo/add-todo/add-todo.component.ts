@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TodoService} from "../../../services/todo.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {TodoInfo} from "../../../shared/todo";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-todo',
@@ -11,7 +12,7 @@ import {TodoInfo} from "../../../shared/todo";
 export class AddTodoComponent implements OnInit{
   addTodo:TodoInfo ={} as TodoInfo;
   formValue!: FormGroup;
-  constructor(private todoService:TodoService, private fb:FormBuilder ) {
+  constructor(private todoService:TodoService, private fb:FormBuilder, private router:Router) {
 
   }
   ngOnInit(){
@@ -38,6 +39,11 @@ export class AddTodoComponent implements OnInit{
       (error)=>{
         console.log(error);
       })
+
+    this.router.navigate(['/todo']);
   }
 
+  previousPage() {
+    this.router.navigate(['/todo']);
+  }
 }
