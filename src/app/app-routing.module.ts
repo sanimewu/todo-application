@@ -5,6 +5,7 @@ import {SignUpComponent} from "./components/user/sign-up/sign-up.component";
 import {TodoListComponentComponent} from "./components/todo/todo-list-component/todo-list-component.component";
 import {NotFoundComponentComponent} from "./components/others/not-found-component/not-found-component.component";
 import {AddTodoComponent} from "./components/todo/add-todo/add-todo.component";
+import {EditTodoComponent} from "./components/todo/edit-todo/edit-todo.component";
 
 const routes: Routes = [
   {path:'', redirectTo: '/login', pathMatch: 'full' },
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path:'signup', component: SignUpComponent},
   {path: 'todo', component:TodoListComponentComponent},
   {path: 'add-todo', component:AddTodoComponent},
+  {path: 'edit-todo/:id', component: EditTodoComponent },
   {path:'**', component: NotFoundComponentComponent},
 ];
 

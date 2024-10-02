@@ -18,4 +18,13 @@ export class TodoService {
   createLocation(todoAdd:TodoInfo): Observable<any> {
     return this.http.post(this.baseUrl, todoAdd);
   }
+  onDeleted(id:any):Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+  onEdit(id:any):Observable<any> {
+    return this.http.get(`${this.baseUrl}/${id}`);
+  }
+  updateTodo(id: string, updatedTodo: TodoInfo): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${id}`, updatedTodo);
+  }
 }

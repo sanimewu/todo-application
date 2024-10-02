@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 export class AddTodoComponent implements OnInit{
   addTodo:TodoInfo ={} as TodoInfo;
   formValue!: FormGroup;
+
   constructor(private todoService:TodoService, private fb:FormBuilder, private router:Router) {
 
   }
@@ -32,14 +33,15 @@ export class AddTodoComponent implements OnInit{
       completed : this.formValue.value.completed,
     };
 
-    this.todoService.createLocation(this.addTodo).subscribe((res)=>{
-      console.log(res);
-      this.formValue.reset();
-    },
-      (error)=>{
+    this.todoService.createLocation(this.addTodo).subscribe({
+      next:((res)=>{
+        console.log(res);
+        this.formValue.reset();
+      }),
+      error:(error)=>{
         console.log(error);
-      })
-
+      }
+    })
     this.router.navigate(['/todo']);
   }
 

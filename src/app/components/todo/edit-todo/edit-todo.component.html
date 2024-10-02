@@ -1,0 +1,46 @@
+<div class="flex gap-4 items-center p-5 w-2/3">
+  <div class="text-lg text-blue-700 font-semibold">
+    <button class="btn-crud" (click)="previousPage()">Previous</button>
+  </div>
+</div>
+<div class="text-2xl text-center font-semibold">Add New Task</div>
+<div class="py-2">
+  <form [formGroup]="formValue" class="flex flex-col items-center justify-center mx-auto">
+    <div class="py-1 w-2/3">
+
+      <div class="text-lg font-base py-1">Title</div>
+      <input type="text" formControlName="title" class="p-2 rounded w-full" />
+      <div class="text-xs text-red-500 py-2" *ngIf="formValue.get('title')?.invalid && formValue.get('title')?.touched">
+        Title is required.
+      </div>
+
+      <div class="text-lg font-base py-1">Description</div>
+      <input type="text" formControlName="description" class="p-2 rounded w-full" />
+      <div class="text-xs text-red-500 py-2" *ngIf="formValue.get('description')?.invalid && formValue.get('description')?.touched">
+        Description is required.
+      </div>
+
+      <div class="text-lg font-base py-1">Task Stage</div>
+      <div class="flex-col">
+        <label class=" items-center gap-1">
+          <input type="radio" formControlName="completed" [value]="true" class="p-2 rounded" />
+          Yes
+        </label>
+        <label class=" items-center gap-1">
+          <input type="radio" formControlName="completed" [value]="false" class="p-2 rounded" />
+          No
+        </label>
+      </div>
+      <div class="text-xs text-red-500 py-2" *ngIf="formValue.get('completed')?.invalid && formValue.get('completed')?.touched">
+        Task status is required.
+      </div>
+
+    </div>
+
+    <button class="btn-primary mt-5" type="submit" [disabled]="formValue.invalid" (click)="OnSubmit()">
+      Submit
+    </button>
+  </form>
+
+</div>
+
