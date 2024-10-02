@@ -7,12 +7,6 @@
 <div class="py-2">
   <form [formGroup]="formValue" class="flex flex-col items-center justify-center mx-auto">
     <div class="py-1 w-2/3">
-      <div class="text-lg font-base py-1">Id</div>
-      <input type="text" formControlName="userId" class="p-2 rounded w-full" />
-      <div class="text-xs text-red-500" *ngIf="formValue.get('userId')?.invalid && formValue.get('userId')?.touched">
-        Id is required.
-      </div>
-
       <div class="text-lg font-base py-1">Title</div>
       <input type="text" formControlName="title" class="p-2 rounded w-full" />
       <div class="text-xs text-red-500 py-2" *ngIf="formValue.get('title')?.invalid && formValue.get('title')?.touched">

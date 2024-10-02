@@ -19,9 +19,8 @@
   <div class="text-2xl font-bold text-green-600 tracking-wide underline">{{filter}} Lists</div>
 
   <div class="hidden sm:flex p-1 w-full border-bottom text-xl text-left">
-    <div class="w-1/12">ID</div>
     <div class="w-2/12">Title</div>
-    <div class="w-4/12">Description</div>
+    <div class="w-5/12">Description</div>
     <div class="w-2/12">Date</div>
     <div class="w-1/12">Status</div>
     <div class="w-2/12">Action</div>
@@ -30,20 +29,17 @@
   <ng-template ngFor let-todo [ngForOf]="filteredTodos()">
     <div class="flex flex-col sm:flex-row p-1 text-left w-full border-b gap-2">
 
-      <div class="w-full sm:w-1/12">
-        <span class="sm:hidden font-semibold">ID: </span>{{todo.userId}}
-      </div>
       <div class="w-full sm:w-2/12">
         <span class="sm:hidden font-semibold">Title: </span>{{todo.title}}
       </div>
-      <div class="w-full sm:w-4/12">
+      <div class="w-full sm:w-5/12">
         <span class="sm:hidden font-semibold">Description: </span>{{todo.description}}
       </div>
       <div class="w-full sm:w-2/12">
         <span class="sm:hidden font-semibold">Date: </span>{{todo.date | date: 'mediumDate'}}
       </div>
       <div class="w-full sm:w-1/12">
-        <span class="sm:hidden font-semibold">Status: </span>{{todo.completed ? 'Yes' : 'No'}}
+        <span class="sm:hidden font-semibold">Status: </span>{{todo.completed ? 'Done' : 'Not'}}
       </div>
       <div class="w-full sm:w-2/12 flex">
         <button (click)="onEditBtn(todo.id)">

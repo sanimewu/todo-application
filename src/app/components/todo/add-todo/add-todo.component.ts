@@ -18,7 +18,6 @@ export class AddTodoComponent implements OnInit{
   }
   ngOnInit(){
       this.formValue = this.fb.group({
-        userId: ['', Validators.required],
         title: ['', Validators.required],
         description: ['', Validators.required],
         completed: ['', Validators.required],
@@ -26,14 +25,13 @@ export class AddTodoComponent implements OnInit{
   }
   createLocation(){
     this.addTodo = {
-      userId : this.formValue.value.userId,
       title : this.formValue.value.title,
       description : this.formValue.value.description,
       date: new Date().toISOString(),
       completed : this.formValue.value.completed,
     };
 
-    this.todoService.createLocation(this.addTodo).subscribe({
+    this.todoService.createTodo(this.addTodo).subscribe({
       next:((res)=>{
         console.log(res);
         this.formValue.reset();

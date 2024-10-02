@@ -19,13 +19,11 @@ export class EditTodoComponent implements OnInit{
     this.formValue = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      date: [new Date()],
       completed: ['', Validators.required],
     });
     this.todoService.onEdit(this.todoId).subscribe({
       next: data => {
         this.formValue.patchValue(data);
-        console.log(this.formValue.value);
       }
     })
   }
@@ -35,8 +33,8 @@ export class EditTodoComponent implements OnInit{
 
   OnSubmit() {
     if(this.formValue.valid){
+      this.formValue.value.date = new Date();
       this.todoService.updateTodo(this.todoId, this.formValue.value).subscribe((res)=>{
-        console.log("updated");
         this.router.navigate(['/todo']);
       })
     }

@@ -20,7 +20,7 @@ export class TodoListComponentComponent implements OnInit{
     this.filter = filterType;
   }
   ngOnInit() {
-    this.todoService.getAllDistrict().subscribe(
+    this.todoService.getAllTodo().subscribe(
       (data:any[]) => {
         this.addTodo = data;
       },
@@ -49,7 +49,7 @@ export class TodoListComponentComponent implements OnInit{
 
     if (isConfirmed) {
       this.todoService.onDeleted(todoId).pipe(
-          switchMap(() => this.todoService.getAllDistrict()) // Get updated list after delete
+          switchMap(() => this.todoService.getAllTodo())
         )
         .subscribe({
           next: (todos) => {

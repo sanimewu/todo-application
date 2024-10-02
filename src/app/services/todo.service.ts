@@ -12,10 +12,10 @@ export class TodoService {
   constructor(private http: HttpClient) {
   }
 
-  getAllDistrict():Observable<any> {
+  getAllTodo():Observable<any> {
     return this.http.get(this.baseUrl);
   }
-  createLocation(todoAdd:TodoInfo): Observable<any> {
+  createTodo(todoAdd:TodoInfo): Observable<any> {
     return this.http.post(this.baseUrl, todoAdd);
   }
   onDeleted(id:any):Observable<any> {
