@@ -11,6 +11,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { AddTodoComponent } from './components/todo/add-todo/add-todo.component';
 import { EditTodoComponent } from './components/todo/edit-todo/edit-todo.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {NgxSpinnerModule} from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

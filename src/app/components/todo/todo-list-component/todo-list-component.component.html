@@ -1,4 +1,4 @@
-<!--<div *ngIf="showIssues">-->
+<div *ngIf="showIssues">
   <div class="flex gap-4 justify-center p-5 flex-wrap sm:flex-nowrap">
     <div class="text-lg text-blue-700 font-semibold sm:flex-col">
       <button class="btn-crud" (click)="filterTasks('All')">All</button>
@@ -60,4 +60,8 @@
       </div>
     </ng-template>
   </div>
-<!--</div>-->
+</div>
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  template="<img src='https://media.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif' width='30' />">
+</ngx-spinner>

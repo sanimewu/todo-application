@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {TodoService} from "../../../services/todo.service";
 import {switchMap} from "rxjs";
+import {NgxSpinnerService} from "ngx-spinner";
 // import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
@@ -16,17 +17,18 @@ export class TodoListComponentComponent implements OnInit{
   showIssues : boolean = false;
 
 
-  constructor(private http: HttpClient, private router: Router, private todoService: TodoService) {
+  constructor(private http: HttpClient, private router: Router, private todoService: TodoService, private spinner:NgxSpinnerService) {
   }
   filterTasks(filterType: string) {
     this.filter = filterType;
   }
   ngOnInit() {
-    // this.spinner.show().then();
-    // setTimeout(() => {
-    //   this.showIssues=true;
-    //   this.spinner.hide().then();
-    // }, 10000);
+
+    this.spinner.show().then();
+    setTimeout(() => {
+      this.showIssues=true;
+      this.spinner.hide().then();
+    }, 10000);
 
     this.todoService.getAllTodo().subscribe(
       (data:any[]) => {
