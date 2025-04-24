@@ -1,9 +1,9 @@
 <div class="bg-center bg-cover" [ngClass]="isDarkMode? 'dark-header' : 'light-header'">
 
   <div class="pt-[10vh] flex flex-wrap w-full text-sm py-3">
-    <div class="max-w-[85rem] w-full max-sm:max-w-[30rem] max-md:max-w-[40rem] mx-auto max-lg:px-10 px-10 flex flex-wrap items-center justify-between">
+    <div class="max-w-[120rem] w-full max-sm:max-w-[30rem] max-md:max-w-[40rem] mx-auto max-lg:px-10 px-10 flex flex-wrap gap-1 items-center justify-between">
 
-      <a class="flex-none text-2xl font-semibold text-white text-center">Todo List</a>
+      <a class="flex-none md:text-2xl text-sm font-semibold text-white text-center">Issue Tracking System</a>
 
       <div class="flex items-center gap-x-5">
 
@@ -28,9 +28,9 @@
   </div>
 
   <div class="pt-[10vh] p-10">
-    <div class="max-h-[810rem] max-w-[80rem] p-10 flex flex-col justify-center mx-auto" [ngClass]="isDarkMode ? 'dark' : 'light'">
-      <div class="text-center text-2xl py-2">Welcome Todo List Application</div>
-      <div class="pt-[10vh]"></div>
+    <div class="max-h-[810rem] max-w-[120rem] p-10 flex flex-col justify-center mx-auto" [ngClass]="isDarkMode ? 'dark' : 'light'">
+      <div class="text-center md:text-2xl text-lg py-2">Welcome Issue Tracking System</div>
+      <div class="pt-[5vh]"></div>
       <router-outlet></router-outlet>
     </div>
   </div>
