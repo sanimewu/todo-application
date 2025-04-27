@@ -23,22 +23,22 @@ export class TodoListComponentComponent implements OnInit{
     this.filter = filterType;
   }
   ngOnInit() {
-
     this.spinner.show().then();
-    setTimeout(() => {
-      this.showIssues=true;
-      this.spinner.hide().then();
-    }, 10000);
+    this.getTodo();
+  }
 
+  getTodo() {
     this.todoService.getAllTodo().subscribe(
-      (data:any[]) => {
+      (data: any[]) => {
         this.addTodo = data;
+        this.showIssues = true;
+        this.spinner.hide().then();
       },
       (error) => {
-        console.error('Error fetching districts:', error);
+        console.error('Error fetching todo:', error);
+        this.spinner.hide().then();
       }
     );
-
   }
   filteredTodos() {
     if (this.filter === 'Completed') {
