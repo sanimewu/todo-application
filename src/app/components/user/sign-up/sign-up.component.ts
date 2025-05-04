@@ -4,9 +4,10 @@ import {Router} from "@angular/router";
 import {UserService} from "../../../services/user.service";
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.scss'
+    selector: 'app-sign-up',
+    templateUrl: './sign-up.component.html',
+    styleUrl: './sign-up.component.scss',
+    standalone: false
 })
 export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
@@ -43,7 +44,7 @@ export class SignUpComponent implements OnInit {
         } else {
           localStorage.setItem('signUpUsers', JSON.stringify(this.signupUsers));
           this.signUpForm.reset();
-          this.router.navigate(['/login']);
+          this.router.navigate(['/login']).then();
         }
       });
 

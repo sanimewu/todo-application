@@ -5,9 +5,10 @@ import {Router} from "@angular/router";
 import {UserService} from "../../../services/user.service";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.scss',
+    standalone: false
 })
 export class LoginComponent implements OnInit{
   loginForm: FormGroup;
@@ -52,7 +53,7 @@ export class LoginComponent implements OnInit{
     this.userService.getGoogleSignIn().subscribe({
       next: (result:any) => {
         if(result){
-          this.router.navigate(['/add-todo']).then();
+          this.router.navigate(['/todo']).then();
         }
       },
       error:(error:any)=>{

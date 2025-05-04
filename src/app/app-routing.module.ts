@@ -6,14 +6,15 @@ import {TodoListComponentComponent} from "./components/todo/todo-list-component/
 import {NotFoundComponentComponent} from "./components/others/not-found-component/not-found-component.component";
 import {AddTodoComponent} from "./components/todo/add-todo/add-todo.component";
 import {EditTodoComponent} from "./components/todo/edit-todo/edit-todo.component";
+import {authGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
   {path:'', redirectTo: '/login', pathMatch: 'full' },
   {path:'login', component: LoginComponent},
   {path:'signup', component: SignUpComponent},
-  {path: 'todo', component:TodoListComponentComponent},
-  {path: 'add-todo', component:AddTodoComponent},
-  {path: 'edit-todo/:id', component: EditTodoComponent },
+  {path: 'todo', component:TodoListComponentComponent, canActivate:[authGuard]},
+  {path: 'add-todo', component:AddTodoComponent, canActivate:[authGuard]},
+  {path: 'edit-todo/:id', component: EditTodoComponent, canActivate:[authGuard]},
   {path:'**', component: NotFoundComponentComponent},
 ];
 

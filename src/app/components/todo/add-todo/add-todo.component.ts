@@ -5,9 +5,10 @@ import {TodoInfo} from "../../../shared/todo";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-add-todo',
-  templateUrl: './add-todo.component.html',
-  styleUrl: './add-todo.component.scss'
+    selector: 'app-add-todo',
+    templateUrl: './add-todo.component.html',
+    styleUrl: './add-todo.component.scss',
+    standalone: false
 })
 export class AddTodoComponent implements OnInit{
   addTodo:TodoInfo ={} as TodoInfo;
@@ -32,18 +33,21 @@ export class AddTodoComponent implements OnInit{
     };
 
     this.todoService.createTodo(this.addTodo).subscribe({
-      next:((res)=>{
-        console.log(res);
+      next: (res) => {
         this.formValue.reset();
-      }),
-      error:(error)=>{
+        setTimeout(() => {
+          this.router.navigate(['/todo']).then(() => {
+          });
+        }, 2000);
+      },
+      error: (error) => {
         console.log(error);
       }
-    })
-    this.router.navigate(['/todo']);
+    });
+
   }
 
   previousPage() {
-    this.router.navigate(['/todo']);
+    this.router.navigate(['/todo']).then();
   }
 }

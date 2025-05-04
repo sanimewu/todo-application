@@ -19,30 +19,63 @@
   <div class="flex flex-col gap-10 items-center p-5">
     <div class="text-2xl font-bold text-green-600 tracking-wide underline">{{filter}} Lists</div>
 
-    <div class="hidden sm:flex p-1 w-full border-bottom text-xl text-left">
-      <div class="w-2/12">Title</div>
-      <div class="w-5/12">Description</div>
-      <div class="w-2/12">Date</div>
+    <div class="hidden sm:flex p-1 gap-2 w-full border-bottom text-base text-left">
+      <div class="w-1/12">Bug Id</div>
+      <div class="w-1/12">Version</div>
+      <div class="w-1/12">Team</div>
+      <div class="w-2/12">Subject</div>
+      <div class="w-1/12">Priority</div>
+      <div class="w-1/12">Reported by</div>
+      <div class="w-1/12">Concerned Person</div>
+      <div class="w-1/12">Assignee</div>
+      <div class="w-1/12">Created Date</div>
       <div class="w-1/12">Status</div>
-      <div class="w-2/12">Action</div>
+      <div class="w-1/12">Action</div>
     </div>
 
     <ng-template ngFor let-todo [ngForOf]="filteredTodos()">
-      <div class="flex flex-col sm:flex-row p-1 text-left w-full border-b border-gray-500 gap-2">
+      <div class="flex flex-col sm:flex-row p-1 text-left w-full text-sm border-b border-gray-500 gap-2">
+
+        <div class="w-full sm:w-1/12">
+          <span class="sm:hidden font-semibold">Bug Id: </span>Bug Id
+        </div>
+
+        <div class="w-full sm:w-1/12">
+          <span class="sm:hidden font-semibold">Version: </span>Version
+        </div>
+
+        <div class="w-full sm:w-1/12">
+          <span class="sm:hidden font-semibold">Team: </span>Team
+        </div>
 
         <div class="w-full sm:w-2/12">
-          <span class="sm:hidden font-semibold">Title: </span>{{todo.title}}
+          <span class="sm:hidden font-semibold">Subject: </span>Subject
         </div>
-        <div class="w-full sm:w-5/12">
-          <span class="sm:hidden font-semibold">Description: </span>{{todo.description}}
+
+        <div class="w-full sm:w-1/12">
+          <span class="sm:hidden font-semibold">Priority: </span>Priority
         </div>
-        <div class="w-full sm:w-2/12">
+
+        <div class="w-full sm:w-1/12">
+          <span class="sm:hidden font-semibold">Reported by: </span>Reported by
+        </div>
+
+        <div class="w-full sm:w-1/12">
+          <span class="sm:hidden font-semibold">Concerned Person: </span>Concerned Person
+        </div>
+
+        <div class="w-full sm:w-1/12">
+          <span class="sm:hidden font-semibold">Assignee: </span>Assignee
+        </div>
+
+
+        <div class="w-full sm:w-1/12">
           <span class="sm:hidden font-semibold">Date: </span>{{todo.date | date: 'mediumDate'}}
         </div>
         <div class="w-full sm:w-1/12">
           <span class="sm:hidden font-semibold">Status: </span>{{todo.completed ? 'Done' : 'Not'}}
         </div>
-        <div class="w-full sm:w-2/12 flex">
+        <div class="w-full sm:w-1/12 flex">
           <button (click)="onEditBtn(todo.id)">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor" class="size-6">

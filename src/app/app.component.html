@@ -19,7 +19,13 @@
           </svg>
         </button>
 
-        <button type="button" class="btn-primary" (click)="login()">{{isLoggedIn?'Logout':'Login'}}</button>
+<!--        <button type="button" class="btn-primary" (click)="login()">{{isLoggedIn?'Logout':'Login'}}</button>-->
+
+        <ng-container *ngIf="afAuth.authState | async as user">
+          <button class="btn-primary" (click)="user ? signOut() : ''">
+            {{ user ? 'Logout' : 'Login' }}
+          </button>
+        </ng-container>
 
       </div>
 

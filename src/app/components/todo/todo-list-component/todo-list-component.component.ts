@@ -7,9 +7,10 @@ import {NgxSpinnerService} from "ngx-spinner";
 // import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
-  selector: 'app-todo-list-component',
-  templateUrl: './todo-list-component.component.html',
-  styleUrl: './todo-list-component.component.scss'
+    selector: 'app-todo-list-component',
+    templateUrl: './todo-list-component.component.html',
+    styleUrl: './todo-list-component.component.scss',
+    standalone: false
 })
 export class TodoListComponentComponent implements OnInit{
   addTodo: any[] = [];

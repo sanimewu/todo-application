@@ -4,9 +4,10 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {TodoService} from "../../../services/todo.service";
 
 @Component({
-  selector: 'app-edit-todo',
-  templateUrl: './edit-todo.component.html',
-  styleUrl: './edit-todo.component.scss'
+    selector: 'app-edit-todo',
+    templateUrl: './edit-todo.component.html',
+    styleUrl: './edit-todo.component.scss',
+    standalone: false
 })
 export class EditTodoComponent implements OnInit{
   formValue!: FormGroup;
