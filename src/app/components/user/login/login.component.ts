@@ -2,6 +2,7 @@ import {Component,OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 import {Router} from "@angular/router";
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit{
     password:'',
   }
 
-  constructor(private fb: FormBuilder, private router:Router) {
+  constructor(private fb: FormBuilder, private router:Router, private userService: UserService) {
     this.loginForm = this.fb.group({
       mail: new FormControl('', [Validators.required, Validators.email]),
       password:new FormControl ('', [Validators.required, Validators.minLength(6)]),
@@ -47,4 +48,17 @@ export class LoginComponent implements OnInit{
     return this.loginForm.get('mail')?.invalid && this.loginForm.get('mail')?.touched || this.loginForm.get('password')?.invalid && this.loginForm.get('password')?.touched
   }
 
+  googleLogin() {
+    this.userService.getGoogleSignIn().subscribe({
+      next: (result:any) => {
+        if(result){
+          this.router.navigate(['/add-todo']).then();
+        }
+      },
+      error:(error:any)=>{
+        console.error('Sign up failed');
+      }
+    })
+
+  }
 }

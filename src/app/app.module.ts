@@ -12,6 +12,9 @@ import { AddTodoComponent } from './components/todo/add-todo/add-todo.component'
 import { EditTodoComponent } from './components/todo/edit-todo/edit-todo.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxSpinnerModule} from "ngx-spinner";
+import {environment} from "./environment/environment";
+import {AngularFireModule} from "@angular/fire/compat";
+import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import {NgxSpinnerModule} from "ngx-spinner";
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

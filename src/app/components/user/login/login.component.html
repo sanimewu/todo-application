@@ -14,6 +14,11 @@
     </div>
     <button class="btn-primary mt-5" [disabled]="loginForm.invalid" (click)="onClick()">Submit</button>
   </form>
+
+  <div class="flex justify-center py-5">
+    <button class="btn-google-signIn" (click)="googleLogin()">Sign In With Google</button>
+  </div>
+
   <div class="text-center mt-2">
     Don't have an account.<a routerLink="/signup" class="text-blue-500 px-2">Sign Up</a>
   </div>

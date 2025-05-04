@@ -1,13 +1,15 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {BehaviorSubject, Observable, observable} from "rxjs";
+import {BehaviorSubject, from, Observable} from "rxjs";
+import {AngularFireAuth} from "@angular/fire/compat/auth";
+import firebase from 'firebase/compat/app';
+import GoogleAuthProvider = firebase.auth.GoogleAuthProvider;
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor() {
+  constructor(private auth:AngularFireAuth) {
   }
 
   getUsers() {
@@ -22,6 +24,11 @@ export class UserService {
       return new BehaviorSubject({userFound:true }).asObservable();
     }
     return new BehaviorSubject({userFound:false});
+  }
+
+  getGoogleSignIn():Observable<any>{
+    const provider = new GoogleAuthProvider();
+    return from(this.auth.signInWithPopup(provider));
   }
 
 }
