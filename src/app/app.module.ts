@@ -6,7 +6,7 @@ import { LoginComponent } from './components/user/login/login.component';
 import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 import { TodoListComponentComponent } from './components/todo/todo-list-component/todo-list-component.component';
 import { NotFoundComponentComponent } from './components/others/not-found-component/not-found-component.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { AddTodoComponent } from './components/todo/add-todo/add-todo.component';
 import { EditTodoComponent } from './components/todo/edit-todo/edit-todo.component';
@@ -15,6 +15,8 @@ import {NgxSpinnerModule} from "ngx-spinner";
 import {environment} from "./environment/environment";
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
+import {NzOptionComponent, NzSelectComponent, NzSelectModule} from "ng-zorro-antd/select";
+import {NzInputDirective} from "ng-zorro-antd/input";
 
 @NgModule({
   declarations: [
@@ -34,7 +36,12 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
     BrowserAnimationsModule,
     NgxSpinnerModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    NzInputDirective,
+    BrowserAnimationsModule,
+    NzSelectModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

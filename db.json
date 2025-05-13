@@ -5,18 +5,16 @@
       "completed": false,
       "date": "2024-10-03T06:53:40.561Z",
       "id": "b9d0",
-      "version": "1.0",
+      "version": "124",
       "priority": "High",
-      "team": ["bug", "frontend", "mobile", "login"],
+      "team": "frontend",
       "status": "Open",
       "reported_by": {
-        "user_id": "USR-123",
-        "name": "Jane Doe",
+        "name": "Jane Doe"
       },
       "concernedPerson": "Mentor A",
       "assigned_to": {
-        "user_id": "DEV-456",
-        "name": "John Smith",
+        "name": "John Smith"
       }
     }
 

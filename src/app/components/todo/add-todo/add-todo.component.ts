@@ -13,16 +13,31 @@ import {Router} from "@angular/router";
 export class AddTodoComponent implements OnInit{
   addTodo:TodoInfo ={} as TodoInfo;
   formValue!: FormGroup;
+  teamOptions:string[] = ['frontend', 'backend'];
+  versionOptions: string[]=['124', '125','126'];
+  priorityOptions: string[]=['Urgent', 'High', 'Normal'];
 
   constructor(private todoService:TodoService, private fb:FormBuilder, private router:Router) {
 
   }
   ngOnInit(){
       this.formValue = this.fb.group({
-        title: ['', Validators.required],
-        description: ['', Validators.required],
+        subject: ['', Validators.required],
         completed: ['', Validators.required],
+        date: [new Date()],
+        id: [''],
+        priority: ['',Validators.required],
+        version: ['', Validators.required],
+        team: ['', Validators.required],
+        reported_by: this.fb.group({
+          name: ['']
+        }),
+        concernedPerson: [''],
+        assigned_to: this.fb.group({
+          name: ['']
+        })
       })
+
   }
   createLocation(){
     this.addTodo = {
@@ -49,5 +64,12 @@ export class AddTodoComponent implements OnInit{
 
   previousPage() {
     this.router.navigate(['/todo']).then();
+  }
+
+  get reportedByGroup():FormGroup {
+    return this.formValue.get('reported_by') as FormGroup;
+  }
+  get assignedToGroup(): FormGroup {
+    return this.formValue.get('assigned_to') as FormGroup;
   }
 }

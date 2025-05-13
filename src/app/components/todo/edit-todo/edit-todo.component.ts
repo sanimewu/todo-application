@@ -29,14 +29,14 @@ export class EditTodoComponent implements OnInit{
     })
   }
   previousPage() {
-    this.router.navigate(['/todo']);
+    this.router.navigate(['/todo']).then();
   }
 
   OnSubmit() {
     if(this.formValue.valid){
       this.formValue.value.date = new Date();
       this.todoService.updateTodo(this.todoId, this.formValue.value).subscribe((res)=>{
-        this.router.navigate(['/todo']);
+        this.router.navigate(['/todo']).then();
       })
     }
   }
