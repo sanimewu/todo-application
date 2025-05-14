@@ -26,12 +26,14 @@ export class TodoListComponentComponent implements OnInit{
   ngOnInit() {
     this.spinner.show().then();
     this.getTodo();
+    console.log(this.addTodo);
   }
 
   getTodo() {
     this.todoService.getAllTodo().subscribe(
       (data: any[]) => {
         this.addTodo = data;
+        console.log(this.addTodo);
         this.showIssues = true;
         this.spinner.hide().then();
       },

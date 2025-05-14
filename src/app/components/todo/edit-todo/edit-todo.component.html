@@ -8,27 +8,73 @@
   <form [formGroup]="formValue" class="flex flex-col items-center justify-center mx-auto">
     <div class="py-1 w-2/3">
 
-      <div class="text-lg font-base py-1">Title</div>
-      <input type="text" formControlName="title" class="p-2 rounded w-full" />
-      <div class="text-xs text-red-500 py-2" *ngIf="formValue.get('title')?.invalid && formValue.get('title')?.touched">
-        Title is required.
+      <div class="text-lg font-base py-1">Subject</div>
+      <input type="text" formControlName="subject" class="p-2 rounded w-full" />
+      <div class="text-xs text-red-500 py-2" *ngIf="formValue.get('subject')?.invalid && formValue.get('subject')?.touched">
+        Subject is required.
       </div>
 
-      <div class="text-lg font-base py-1">Description</div>
-      <input type="text" formControlName="description" class="p-2 rounded w-full" />
-      <div class="text-xs text-red-500 py-2" *ngIf="formValue.get('description')?.invalid && formValue.get('description')?.touched">
-        Description is required.
+      <div class="text-lg font-base py-1">Concerned Person</div>
+      <input type="text" formControlName="concernedPerson" class="p-2 rounded w-full" maxlength="20"/>
+      <div class="text-xs text-red-500 py-2" *ngIf="formValue.get('concernedPerson')?.invalid && formValue.get('concernedPerson')?.touched">
+        Concerned Person is required.
       </div>
+
+      <div class="text-lg font-base py-1">Priority</div>
+      <div class="flex sm:flex-row flex-col gap-2">
+        <label *ngFor="let option of priorityOptions" class="flex items-center gap-2">
+          <input type="radio" [value]="option" formControlName="priority" class="p-2 rounded"/>{{ option }}
+        </label>
+      </div>
+
+      <div class="text-xs text-red-500 py-2" *ngIf="formValue.get('priority')?.invalid && formValue.get('priority')?.touched">
+        Priority is required.
+      </div>
+
+      <div class="text-lg font-base py-1">Version</div>
+      <div class="flex sm:flex-row flex-col gap-2">
+        <label *ngFor="let option of versionOptions" class="flex items-center gap-2">
+          <input type="radio" [value]="option" formControlName="version" class="p-2 rounded"/>{{ option }}
+        </label>
+      </div>
+
+      <div class="text-xs text-red-500 py-2" *ngIf="formValue.get('version')?.invalid && formValue.get('version')?.touched">
+        Version is required.
+      </div>
+
+
+      <div [formGroup]="assignedToGroup" >
+        <label class="text-lg font-base py-1">Assigned To</label>
+        <input type="text" formControlName="name" class="w-full p-2 border rounded" />
+      </div>
+
+      <div class="text-lg font-base py-1">Team</div>
+      <div class="flex sm:flex-row flex-col gap-2">
+        <label *ngFor="let option of teamOptions" class="flex items-center gap-2">
+          <input type="radio" [value]="option" formControlName="team" class="p-2 rounded"/>{{ option }}
+        </label>
+      </div>
+
+      <div class="text-xs text-red-500 py-2" *ngIf="formValue.get('team')?.invalid && formValue.get('team')?.touched">
+        Team is required.
+      </div>
+
+
+      <div [formGroup]="reportedByGroup" >
+        <label class="text-lg font-base py-1">Reported By</label>
+        <input type="text" formControlName="name" class="w-full p-2 border rounded" />
+      </div>
+
 
       <div class="text-lg font-base py-1">Task Stage</div>
       <div class="flex-col">
         <label class=" items-center gap-1">
           <input type="radio" formControlName="completed" [value]="true" class="p-2 rounded" />
-          Yes
+          Done
         </label>
         <label class=" items-center gap-1">
           <input type="radio" formControlName="completed" [value]="false" class="p-2 rounded" />
-          No
+          Pending
         </label>
       </div>
       <div class="text-xs text-red-500 py-2" *ngIf="formValue.get('completed')?.invalid && formValue.get('completed')?.touched">

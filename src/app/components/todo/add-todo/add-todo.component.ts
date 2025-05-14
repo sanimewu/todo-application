@@ -13,7 +13,7 @@ import {Router} from "@angular/router";
 export class AddTodoComponent implements OnInit{
   addTodo:TodoInfo ={} as TodoInfo;
   formValue!: FormGroup;
-  teamOptions:string[] = ['frontend', 'backend'];
+  teamOptions:string[] = ['Frontend', 'Backend','Both'];
   versionOptions: string[]=['124', '125','126'];
   priorityOptions: string[]=['Urgent', 'High', 'Normal'];
 
@@ -41,10 +41,8 @@ export class AddTodoComponent implements OnInit{
   }
   createLocation(){
     this.addTodo = {
-      title : this.formValue.value.title,
-      description : this.formValue.value.description,
+      ...this.formValue.value,
       date: new Date().toISOString(),
-      completed : this.formValue.value.completed,
     };
 
     this.todoService.createTodo(this.addTodo).subscribe({

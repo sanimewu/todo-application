@@ -12,16 +12,31 @@ import {TodoService} from "../../../services/todo.service";
 export class EditTodoComponent implements OnInit{
   formValue!: FormGroup;
   todoId!:string;
-
+  teamOptions:string[] = ['Frontend', 'Backend','Both'];
+  priorityOptions: string[]=['Urgent', 'High', 'Normal'];
+  versionOptions: string[]=['124', '125','126'];
   constructor(private route:ActivatedRoute,private router:Router, private fb:FormBuilder,private todoService:TodoService) {
   }
   ngOnInit():void{
     this.todoId= this.route.snapshot.paramMap.get('id')||'';
+
     this.formValue = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
+      subject: ['', Validators.required],
       completed: ['', Validators.required],
+      date: [new Date()],
+      id: [''],
+      priority: ['',Validators.required],
+      version: ['', Validators.required],
+      team: ['', Validators.required],
+      reported_by: this.fb.group({
+        name: ['']
+      }),
+      concernedPerson: [''],
+      assigned_to: this.fb.group({
+        name: ['']
+      })
     });
+
     this.todoService.onEdit(this.todoId).subscribe({
       next: data => {
         this.formValue.patchValue(data);
@@ -39,5 +54,13 @@ export class EditTodoComponent implements OnInit{
         this.router.navigate(['/todo']).then();
       })
     }
+  }
+
+  get reportedByGroup():FormGroup {
+    return this.formValue.get('reported_by') as FormGroup;
+  }
+
+  get assignedToGroup():FormGroup {
+    return this.formValue.get('assigned_to') as FormGroup;
   }
 }

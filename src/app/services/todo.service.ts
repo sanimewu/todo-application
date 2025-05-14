@@ -7,7 +7,7 @@ import {TodoInfo} from "../shared/todo";
   providedIn: 'root'
 })
 export class TodoService {
-  baseUrl: string = "https://todo-yj31.onrender.com/todos";
+  baseUrl: string = "https://todo-1-rzgn.onrender.com/todos";
 
   constructor(private http: HttpClient) {
   }

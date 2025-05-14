@@ -37,35 +37,35 @@
       <div class="flex flex-col sm:flex-row p-1 text-left w-full text-sm border-b border-gray-500 gap-2">
 
         <div class="w-full sm:w-1/12">
-          <span class="sm:hidden font-semibold">Bug Id: </span>Bug Id
+          <span class="sm:hidden font-semibold">Bug Id: </span>{{todo.id}}
         </div>
 
         <div class="w-full sm:w-1/12">
-          <span class="sm:hidden font-semibold">Version: </span>Version
+          <span class="sm:hidden font-semibold">Version: </span>{{todo.version}}
         </div>
 
         <div class="w-full sm:w-1/12">
-          <span class="sm:hidden font-semibold">Team: </span>Team
+          <span class="sm:hidden font-semibold">Team: </span>{{todo.team}}
         </div>
 
         <div class="w-full sm:w-2/12">
-          <span class="sm:hidden font-semibold">Subject: </span>Subject
+          <span class="sm:hidden font-semibold">Subject: </span>{{ todo.subject }}
         </div>
 
         <div class="w-full sm:w-1/12">
-          <span class="sm:hidden font-semibold">Priority: </span>Priority
+          <span class="sm:hidden font-semibold">Priority: </span>{{todo.priority}}
         </div>
 
         <div class="w-full sm:w-1/12">
-          <span class="sm:hidden font-semibold">Reported by: </span>Reported by
+          <span class="sm:hidden font-semibold">Reported by: </span>{{ todo.reported_by.name }}
         </div>
 
         <div class="w-full sm:w-1/12">
-          <span class="sm:hidden font-semibold">Concerned Person: </span>Concerned Person
+          <span class="sm:hidden font-semibold">Concerned Person: </span>{{ todo.concernedPerson }}
         </div>
 
         <div class="w-full sm:w-1/12">
-          <span class="sm:hidden font-semibold">Assignee: </span>Assignee
+          <span class="sm:hidden font-semibold">Assignee: </span>{{ todo.assigned_to.name }}
         </div>
 
 
@@ -73,7 +73,7 @@
           <span class="sm:hidden font-semibold">Date: </span>{{todo.date | date: 'mediumDate'}}
         </div>
         <div class="w-full sm:w-1/12">
-          <span class="sm:hidden font-semibold">Status: </span>{{todo.completed ? 'Done' : 'Not'}}
+          <span class="sm:hidden font-semibold">Status: </span>{{todo.completed ? 'Resolved' : 'Open'}}
         </div>
         <div class="w-full sm:w-1/12 flex">
           <button (click)="onEditBtn(todo.id)">
